@@ -12,8 +12,9 @@ costruire appropriatamente le istanze.
 <?php
 class Computer
 {
-    function __construct(public string $schedaMadre, public string $ram, public string $cpu, public string $ssd, public string $sistemaOperativo)
+    function __construct(public string $name, public string $schedaMadre, public string $ram, public string $cpu, public string $ssd, public string $sistemaOperativo)
     {
+        $this->name = $name;
         $this->schedaMadre = $schedaMadre;
         $this->cpu = $cpu;
         $this->ram = $ram;
@@ -23,9 +24,9 @@ class Computer
 }
 class Desktop extends Computer
 {
-    function __construct($schedaMadre, $cpu, $ram, $ssd, $sistemaOperativo, public string $mouse, public string $tastiera)
+    function __construct($name, $schedaMadre, $cpu, $ram, $ssd, $sistemaOperativo, public string $mouse, public string $tastiera)
     {
-        parent::__construct($schedaMadre, $cpu, $ram, $ssd, $sistemaOperativo);
+        parent::__construct($name, $schedaMadre, $cpu, $ram, $ssd, $sistemaOperativo);
         $this->mouse = $mouse;
         $this->tastiera = $tastiera;
     }
@@ -33,10 +34,12 @@ class Desktop extends Computer
 
 class Laptop extends Computer
 {
-    function __construct($schedaMadre, $cpu, $ram, $ssd, $sistemaOperativo, public string $alimentatore, public string $batteria)
+    function __construct($name, $schedaMadre, $cpu, $ram, $ssd, $sistemaOperativo, public string $alimentatore, public string $batteria)
     {
-        parent::__construct($schedaMadre, $cpu, $ram, $ssd, $sistemaOperativo);
+        parent::__construct($name, $schedaMadre, $cpu, $ram, $ssd, $sistemaOperativo);
         $this->alimentatore = $alimentatore;
         $this->batteria = $batteria;
     }
 }
+include_once __DIR__ . '/db.php';
+var_dump($computers);
