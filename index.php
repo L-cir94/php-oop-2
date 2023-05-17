@@ -34,10 +34,10 @@ class Desktop extends Computer
 
 class Laptop extends Computer
 {
-    function __construct($name, $schedaMadre, $cpu, $ram, $ssd, $sistemaOperativo, public string $alimentatore, public string $batteria)
+    function __construct($name, $schedaMadre, $cpu, $ram, $ssd, $sistemaOperativo, public string $alimentazione, public string $batteria)
     {
         parent::__construct($name, $schedaMadre, $cpu, $ram, $ssd, $sistemaOperativo);
-        $this->alimentatore = $alimentatore;
+        $this->alimentazione = $alimentazione;
         $this->batteria = $batteria;
     }
 }
@@ -67,8 +67,8 @@ include_once __DIR__ . '/db.php';
         <div class="container">
             <div class="row">
                 <?php foreach ($computers as $computer) : ?>
-                    <div class="col-3">
-                        <div class="card">
+                    <div class="col-4 mt-5">
+                        <div class="card h-100">
                             <div class="card-title">
                                 <!-- method -->
                             </div>
@@ -79,11 +79,13 @@ include_once __DIR__ . '/db.php';
                                 <p class="card-text">Ram: <?=$computer->ram?></p>
                                 <p class="card-text">SSD/HDD: <?=$computer->ssd?></p>
                                 <p class="card-text">Scheda Madre: <?=$computer->schedaMadre?></p>
+                                <p class="card-text">Batteria: <?=$computer->batteria?></p>
                             </div>
                             <div class="card-footer">
                                 <h4>Accessori</h4>
                                 <p class="card-text"><?=$computer->mouse?></p>
                                 <p class="card-text"><?=$computer->tastiera?></p>
+                                <p class="card-text">Alimentatore esterno <?=$computer->alimentazione?></p>
                             </div>
                         </div>
                     </div>
