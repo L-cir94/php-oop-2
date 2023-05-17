@@ -42,7 +42,7 @@ class Laptop extends Computer
     }
 }
 include_once __DIR__ . '/db.php';
-var_dump($computers);
+
 ?>
 <!doctype html>
 <html lang="en">
