@@ -10,37 +10,7 @@ BONUS:
 costruire appropriatamente le istanze.
 - aggiungere un metodo che stampi la stringa con tutte le info del dispositivo (oltre ai getter/setters necessari). -->
 <?php
-class Computer
-{
-    function __construct(public string $name, public string $schedaMadre, public string $ram, public string $cpu, public string $ssd, public string $sistemaOperativo)
-    {
-        $this->name = $name;
-        $this->schedaMadre = $schedaMadre;
-        $this->cpu = $cpu;
-        $this->ram = $ram;
-        $this->ssd = $ssd;
-        $this->sistemaOperativo = $sistemaOperativo;
-    }
-}
-class Desktop extends Computer
-{
-    function __construct($name, $schedaMadre, $cpu, $ram, $ssd, $sistemaOperativo, public string $mouse, public string $tastiera)
-    {
-        parent::__construct($name, $schedaMadre, $cpu, $ram, $ssd, $sistemaOperativo);
-        $this->mouse = $mouse;
-        $this->tastiera = $tastiera;
-    }
-}
-
-class Laptop extends Computer
-{
-    function __construct($name, $schedaMadre, $cpu, $ram, $ssd, $sistemaOperativo, public string $alimentazione, public string $batteria)
-    {
-        parent::__construct($name, $schedaMadre, $cpu, $ram, $ssd, $sistemaOperativo);
-        $this->alimentazione = $alimentazione;
-        $this->batteria = $batteria;
-    }
-}
+include_once __DIR__ . '/computer.php';
 include_once __DIR__ . '/db.php';
 
 ?>
@@ -86,6 +56,8 @@ include_once __DIR__ . '/db.php';
                                 <p class="card-text"><?=$computer->mouse?></p>
                                 <p class="card-text"><?=$computer->tastiera?></p>
                                 <p class="card-text">Alimentatore esterno <?=$computer->alimentazione?></p>
+                                <h4>Peso</h4>
+                                <p><?=$computer->getWeight()?></p>
                             </div>
                         </div>
                     </div>
